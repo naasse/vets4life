@@ -4,14 +4,18 @@ const app = express();
 const PORT = 3000;
 
 // Serve all static files from the 'public' folder
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 app.get("/faq", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/faq.html"));
+  res.sendFile(path.join(__dirname, "faq.html"));
 });
 
 app.get("/contact-us", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/contact-us.html"));
+  res.sendFile(path.join(__dirname, "contact-us.html"));
 });
 
 app.listen(PORT, () => {
